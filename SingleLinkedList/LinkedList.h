@@ -7,16 +7,16 @@ class LinkedList {
         int size;
 
     public:
-        LinkedList();
-        LinkedList(int);
-        ~LinkedList();
+        LinkedList(); //done
+        ~LinkedList(); //done
 
-        void Append(int value);
-        void Prepend(int value);
-        void Insert(int index, int value);
-        void Remove(int index);
-        int Get(int index);
+        void Append(int);
+        void InsertInFront(int); //done
+        void Insert(int, int);
+        void Remove(int);
+        int Get(int);
         int GetSize() const;
         bool IsEmpty() const;
         bool MakeEmpty();
+        void PrintList();
 };
