@@ -11,7 +11,7 @@ class LinkedList {
         ~LinkedList(); //done
 
         void Append(int);
-        void InsertInFront(int); //done
+        void InsertInFront(int); //done 
         void Insert(int, int);
         void Remove(int);
         int Get(int);
