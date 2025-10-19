@@ -4,8 +4,10 @@
 
 using namespace std;
 
-LinkedList::LinkedList() : head(nullptr) , size(0) {}
+//default constructor
+LinkedList::LinkedList() : head(nullptr) , size(0), currNode(nullptr), tail(nullptr) {}
 
+//destructor
 LinkedList::~LinkedList() {
     Node* next;
     while (head != nullptr) {
@@ -15,6 +17,7 @@ LinkedList::~LinkedList() {
     }
 }
 
+//Make LinkedList empty
 bool LinkedList::MakeEmpty() {
     Node* next;
     while (head != nullptr) {
@@ -29,25 +32,63 @@ bool LinkedList::MakeEmpty() {
     return true;
 }
 
+//Inserting a node at the front a list
 void LinkedList::InsertInFront(int value){
     Node* newNode = new Node();
     newNode->data = value;
     newNode->next = head;
     head = newNode;
+    if (size == 0){
+        tail = newNode;
+    }
     size++;
 }
 
-void LinkedList::PrintList(){
+//Inserting node at the end of the list
+void LinkedList::InsertAtEnd(int value){
+    int tempCount = 0;
+    Node* newNode = new Node();
+    newNode->data = value;
+    newNode->next = nullptr;
+
     if (head == nullptr){
+        head = newNode;
+    } else {
+        tail->next = newNode;
+    }
+    tail = newNode;
+    size++;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//printing current linked list
+void LinkedList::PrintList(){
+    currNode = head;
+    if (currNode == nullptr){
         cout << "List is empty!\n";
     }
-    while (head != nullptr){
-        cout << head->data << " ";
-        head = head->next;
+    while (currNode != nullptr){
+        cout << currNode->data << " ";
+        currNode = currNode->next;
     }
     cout << "\n";
 }
 
+//returning size of current list
 int LinkedList::GetSize() const{
     return size;
 }
