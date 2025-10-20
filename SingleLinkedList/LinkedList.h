@@ -12,12 +12,12 @@ class LinkedList {
         LinkedList(); //done
         ~LinkedList(); //done
         void InsertInFront(int); //done 
-        void InsertAfterNode(int, int);
+        void InsertAfterNode(int, int); //done
         void InsertAtEnd(int); //done
         void Remove(int);
-        int Get(int);
+        Node* GetNode(int); //done
         int GetSize() const; //done
         bool IsEmpty() const; //done
-        bool MakeEmpty();
-        void PrintList();
+        bool MakeEmpty(); //done
+        void PrintList(); //done
 };

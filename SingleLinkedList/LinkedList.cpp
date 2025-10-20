@@ -61,12 +61,55 @@ void LinkedList::InsertAtEnd(int value){
     
 }
 
+//Inserting node after a given value, if present
+void LinkedList::InsertAfterNode(int newValue, int afterValue){
+    Node* afterNode = GetNode(afterValue);
+    Node* newNode = new Node();
+    newNode->data = newValue;
+    if (afterNode != nullptr){
+        newNode->next = afterNode->next;
+        afterNode->next = newNode;
+        size++;
+    } else {
+        //deleting in the event that item is not found
+        delete newNode;
+    }
+}
 
 
+//Function to return a value from the list, if present
+Node* LinkedList::GetNode(int searchValue){
+    Node* location = head;
+    while (location != nullptr){
+        if (location->data == searchValue){
+            return location;
+        }
+        location = location->next;
+    }
+    return nullptr;
+}
 
+//Deleting a specifc value
+void LinkedList::Remove(int value){
+    Node* current = head;
+    Node* prevNode = nullptr;
+    
 
-
-
+    while (current != nullptr && current->data != value){
+        prevNode = current;
+        current = current->next;
+    }
+    if (current == nullptr){
+        return;
+    }
+    if (prevNode == nullptr){
+        head = current->next;
+    } else {
+        prevNode->next = current->next;
+    }
+    delete current;
+    size--;
+}
 
 
 
