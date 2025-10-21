@@ -111,10 +111,32 @@ void LinkedList::Remove(int value){
     size--;
 }
 
-
-
-
-
+//Function to sort Linked List on insertion
+void LinkedList::InsertionSort(){
+    Node* SortedHead = nullptr;
+    Node* current = head;
+    Node* nextNode;
+    if (current == nullptr){
+        return;
+    }
+    while (current != nullptr){
+        nextNode = current->next;
+        current->next = nullptr;
+        if (SortedHead == nullptr || current->data <= SortedHead->data){
+            current->next = SortedHead;
+            SortedHead = current;
+        } else {
+            Node* search = SortedHead;
+            while (search->next != nullptr && search->next->data < current->data){
+                search = search->next;
+            }
+            current->next = search->next;
+            search->next = current;
+        }
+        current = nextNode;
+    }
+    head = SortedHead;
+}
 
 
 

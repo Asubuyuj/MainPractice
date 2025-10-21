@@ -14,10 +14,11 @@ class LinkedList {
         void InsertInFront(int); //done 
         void InsertAfterNode(int, int); //done
         void InsertAtEnd(int); //done
-        void Remove(int);
+        void Remove(int); //donr
         Node* GetNode(int); //done
         int GetSize() const; //done
         bool IsEmpty() const; //done
         bool MakeEmpty(); //done
+        void InsertionSort();  //currently working on
         void PrintList(); //done
 };
