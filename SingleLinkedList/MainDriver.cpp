@@ -10,7 +10,10 @@ int main(){
     LinkedList unsorted;
     LinkedList sorted;
     sorted.InsertInFront(5);
-    //sorted.InsertInFront(7);
+    sorted.InsertInFront(7);
+    sorted.InsertInFront(18);
+    sorted.InsertAtEnd(54);
+    sorted.InsertAtEnd(78);
     cout << "Checking list before sorting\n";
     sorted.PrintList();
 
