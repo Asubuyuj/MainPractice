@@ -111,10 +111,49 @@ void LinkedList::Remove(int value){
     size--;
 }
 
+//Function to sort Linked List on insertion
+void LinkedList::InsertionSort(){
+    Node* current = head;
+    Node* SortedHead = nullptr;
+    Node* nextNode;
 
+    //if list is empty then terminate, because there are no nodes in the list
+    if (current == nullptr){
+        return;
+    }
 
+    //while there is a node in the list, or as long as current is not null
+    while (current != nullptr){
+        //set the temp node to the next node in original list(current->next)
+        nextNode = current->next;
+        current->next = nullptr; //this is optional but paints clear picture that this is disconnected from og list
 
-
+        //check if we get to end of list or the next value in the new list is greater than OG node
+        if (SortedHead == nullptr || current->data <= SortedHead->data){
+            //if either is true, then set the OG node pointer to point to the new list node
+            current->next = SortedHead;
+            //set new sorted list head to the node that was just added
+            SortedHead = current;
+        } else {
+            //if sorted either is false
+            //create a new node and set that to the new sorted list head
+            Node* search = SortedHead;
+            //while the new node pointer is not null AND the value, of the next node, is less than the current node value
+            while (search->next != nullptr && search->next->data < current->data){
+                //move to next node
+                search = search->next;
+            }
+            //once proper spot has been found
+            //set the node pointer to point to whatever the search node is pointing to
+            current->next = search->next;
+            //then set the search node pointer to the next node in the og list
+            search->next = current;
+        }
+        //move to the next node
+        current = nextNode;
+    }
+    head = SortedHead;
+}
 
 
 
