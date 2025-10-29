@@ -5,22 +5,38 @@
 using namespace std;
 
 //default constructor
-LinkedList::LinkedList() : size(0), tail(nullptr) {}
+CircularLinkedList::CircularLinkedList() : size(0), tail(nullptr) {}
 
 //Inserting node at the end of the list
-void LinkedList::InsertAtEnd(int value){
+void CircularLinkedList::InsertAtEnd(int value){
+    //allocating memory for a new node
     Node* newNode = new Node();
+    //setting node values
     newNode->data = value;
     newNode->next = nullptr;
 
-    if (head == nullptr){
-        head = newNode;
+    //checking if a node already exsist in the list
+    if (!tail){
+        tail = newNode;
+        tail->next = tail;
     } else {
-        tail->next = newNode;
+        newNode->next = tail->next;
+        tail = newNode;
     }
-    tail = newNode;
-    size++;
+
     
+    
+}
+//Inserting a node at the front a list
+void CircularLinkedList::InsertInFront(int value){
+    Node* newNode = new Node();
+    newNode->data = value;
+    newNode->next = tail;
+    tail = newNode;
+    if (size == 0){
+        tail->next = tail;
+    }
+    size++;
 }
 
 //destructor
@@ -171,23 +187,22 @@ void LinkedList::InsertionSort(){
     head = SortedHead;
 }
 
+//returning size of current list
+int LinkedList::GetSize() const{
+    return size;
+}*/
 
 
 //printing current linked list
-void LinkedList::PrintList(){
-    Node* currNode = head;
-    if (currNode == nullptr){
+void CircularLinkedList::PrintList(){
+    Node* currNode = tail;
+    if (!currNode){
         cout << "List is empty!\n";
     }
-    while (currNode != nullptr){
+    while (currNode != tail){
         cout << currNode->data << " ";
         currNode = currNode->next;
     }
     cout << "\n";
 }
-
-//returning size of current list
-int LinkedList::GetSize() const{
-    return size;
-}*/
 

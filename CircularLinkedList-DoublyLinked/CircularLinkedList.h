@@ -1,14 +1,14 @@
 #pragma once
 #include "SingleNode.h"
 
-class LinkedList {
+class CircularLinkedList {
     private:
         Node* tail;
         int size;
 
     public:
-        LinkedList(); //done
-        ~LinkedList(); //done
+        CircularLinkedList(); //done
+        ~CircularLinkedList(); //done
         void InsertInFront(int); //done 
         void InsertAfterNode(int, int); //done
         void InsertAtEnd(int); //done
