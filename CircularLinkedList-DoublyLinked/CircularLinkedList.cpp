@@ -21,14 +21,13 @@ void CircularLinkedList::InsertAtEnd(int value){
         tail->next = tail;
     } else {
         newNode->next = tail->next;
+        tail->next = newNode;
         tail = newNode;
     }
-
-    
-    
+    size++;    
 }
 //Inserting a node at the front a list
-void CircularLinkedList::InsertInFront(int value){
+/*void CircularLinkedList::InsertInFront(int value){
     Node* newNode = new Node();
     newNode->data = value;
     newNode->next = tail;
@@ -37,6 +36,18 @@ void CircularLinkedList::InsertInFront(int value){
         tail->next = tail;
     }
     size++;
+}*/
+CircularLinkedList::~CircularLinkedList() {
+    if (!tail) return;
+    Node* current = tail->next;
+    Node* nextNode = nullptr;
+
+    while (current != tail->next){
+        nextNode = current->next;
+        delete current;
+        current = nextNode;
+    }
+    tail = nullptr;
 }
 
 //destructor
@@ -195,14 +206,16 @@ int LinkedList::GetSize() const{
 
 //printing current linked list
 void CircularLinkedList::PrintList(){
-    Node* currNode = tail;
-    if (!currNode){
+    if (!tail){
         cout << "List is empty!\n";
+        return;
     }
-    while (currNode != tail){
-        cout << currNode->data << " ";
-        currNode = currNode->next;
-    }
+    Node* current = tail->next;
+    do {
+        cout << current->data << " ";
+        current = current->next;
+
+    } while (current != tail->next);
     cout << "\n";
 }
 
