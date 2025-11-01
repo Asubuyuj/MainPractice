@@ -27,7 +27,7 @@ void CircularLinkedList::InsertAtEnd(int value){
     size++;    
 }
 //Inserting a node at the front a list
-/*void CircularLinkedList::InsertInFront(int value){
+void CircularLinkedList::InsertInFront(int value){
     Node* newNode = new Node();
     newNode->data = value;
     newNode->next = tail;
@@ -36,7 +36,7 @@ void CircularLinkedList::InsertAtEnd(int value){
         tail->next = tail;
     }
     size++;
-}*/
+}
 CircularLinkedList::~CircularLinkedList() {
     if (!tail) return;
     Node* current = tail->next;
