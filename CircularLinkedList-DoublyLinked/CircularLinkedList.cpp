@@ -30,12 +30,6 @@ void CircularLinkedList::InsertAtEnd(int value){
 void CircularLinkedList::InsertInFront(int value){
     Node* newNode = new Node();
     newNode->data = value;
-    newNode->next = tail;
-    tail = newNode;
-    if (size == 0){
-        tail->next = tail;
-    }
-    size++;
 }
 CircularLinkedList::~CircularLinkedList() {
     if (!tail) return;
